@@ -8,7 +8,12 @@ arcadeApp.controller('ScoreController', ['$scope', '$filter', 'angularFire',
     $scope.sort = "-score";
     angularFire(firebase, $scope, "players");
     $scope.addPlayer = function() {
-        $scope.players.push({name: name, score: 0, puzzle: {'holder':0}});
+        if($filter('filter')($scope.players, {name:name})[0] != null){
+            alert('You already exist!');
+        } else {
+            $scope.players.push({name: name, score: 0, puzzle: {'holder':0}});
+        }
+        window.location = "http://9volt-developers.com/arcade2013/scores.html";
     };
     $scope.addPoints = function() {
         var p = $filter('filter')($scope.players, {name: name})[0];
@@ -23,7 +28,7 @@ arcadeApp.controller('ScoreController', ['$scope', '$filter', 'angularFire',
         } else {
             alert("Please wait 30min before rescoring");
         }
-
+        window.location = "http://9volt-developers.com/arcade2013/scores.html";
     };
 }]);
 
