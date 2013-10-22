@@ -1,21 +1,34 @@
 var firebase = new Firebase("https://arcade2013.firebaseio.com");
 var arcadeApp = angular.module('arcadeApp', ["firebase"]);
+var name = ""
 
-arcadeApp.controller('ScoreController', ['$scope', 'angularFire', 
-        function ScoreController($scope, angularFire){
+arcadeApp.controller('ScoreController', ['$scope', '$filter', 'angularFire', 
+        function ScoreController($scope, $filter, angularFire){
     $scope.players = [];
     angularFire(firebase, $scope, "players");
     $scope.addPlayer = function() {
-        $scope.players.push({user: name, score: 0});
+        $scope.players.push({user: name, score: 0, puzzle: {holder:0}});
     };
     $scope.addPoints = function() {
+        var p = $filter('filter')($scope.players, {name: name})[0];
+        var date = p.puzzle[$scope.puzzle];
+        // no rescoring for 30min
+        if(date != null && new Date().getTime() - date > 1800000){
+            p.puzzle[$scope.puzzle] = new Date().getTime();
+            p.score += $scope.points;
+        } else if (date == null){
+            p.puzzle[$scope.puzzle] = new Date().getTime();
+            p.score += $scope.points;
+        } else {
+            alert("Please wait 30min before rescoring");
+        }
 
     };
 }]);
 
+
 angular.element(document).ready(function(){
     var cookie = cookieToObject(document.cookie);
-    var name = "";
     if(cookie['name']){
         name = cookie['name'];
     } else {
