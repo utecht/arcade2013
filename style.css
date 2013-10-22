@@ -1,6 +1,12 @@
-.thread {
-    float:left;
+body{
+    background: black;
+    color:white;
 }
-.user {
+table{
+    margin:50px;
+    width:500px;
+}
+td{
+    font-size:20pt;
     font-weight:bold;
 }
