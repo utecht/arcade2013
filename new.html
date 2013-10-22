@@ -1,6 +1,6 @@
 <html ng-app="arcadeApp">
     <head>
-        <title>Scoreboard</title>
+        <title>Score Test</title>
         <script type='text/javascript' src='angular.min.js'></script>
         <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
         <script type='text/javascript' src='angularfire.min.js'></script>
@@ -9,10 +9,8 @@
         <link rel="stylesheet" href='style.css'>
     </head>
     <body ng-controller="ScoreController">
-        <table>
-            <tr ng-repeat="player in players | orderBy:sort">
-                <td>{{player.name}}</td><td>{{player.score}}</td><td>{{player.puzzles.test}}</td>
-            </tr>
-        </table>
+        <form ng-submit="addPlayer()">
+            <input class="btn-primary" type="submit" value="Sign up">
+        </form>
     </body>
 </html>

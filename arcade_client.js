@@ -5,9 +5,10 @@ var name = ""
 arcadeApp.controller('ScoreController', ['$scope', '$filter', 'angularFire', 
         function ScoreController($scope, $filter, angularFire){
     $scope.players = [];
+    $scope.sort = "-score";
     angularFire(firebase, $scope, "players");
     $scope.addPlayer = function() {
-        $scope.players.push({user: name, score: 0, puzzle: {holder:0}});
+        $scope.players.push({name: name, score: 0, puzzle: {'holder':0}});
     };
     $scope.addPoints = function() {
         var p = $filter('filter')($scope.players, {name: name})[0];
