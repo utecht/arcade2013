@@ -1,2 +1,1 @@
-An angular and firebase chat.
-http://utecht.github.io/agora/
+Scoreboard app for Halloween party 2013
