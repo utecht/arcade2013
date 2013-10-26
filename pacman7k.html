@@ -1,0 +1,17 @@
+<html ng-app="arcadeApp">
+    <head>
+        <title>Pacman 7k</title>
+        <script type='text/javascript' src='angular.min.js'></script>
+        <script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+        <script type='text/javascript' src='angularfire.min.js'></script>
+        <script type="text/javascript" src='arcade_client.js'></script>
+        <link rel="stylesheet" href='bootstrap/css/bootstrap.css'>
+    </head>
+    <body ng-controller="ScoreController">
+        <h1>I scored 7,000 points in Pacman, and would like to claim my 100 points</h1>
+        <form ng-submit="addPoints()">
+            <input type="hidden" ng-init="points=100;puzzle='pacman7k'">
+            <input class="btn-large btn-primary" type="submit" value="Score">
+        </form>
+    </body>
+</html>
