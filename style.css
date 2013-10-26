@@ -10,3 +10,6 @@ td{
     font-size:20pt;
     font-weight:bold;
 }
+.container{
+    -webkit-column-count:2;
+}
